@@ -1,0 +1,22 @@
+<XmlConfig>
+  <host>airiot.tech</host>
+  <port>31001</port>
+  <credentials>
+    <ak>bfd7a389-12ca-14d7-4c8e-774cce161a29</ak>
+    <sk>887d6c2a-1a82-3801-0b63-f139d38ee99d</sk>
+  </credentials>
+  <mqtt>
+    <host>airiot.tech</host>
+    <port>11883</port>
+    <username>admin</username>
+    <password>public</password>
+  </mqtt>
+  <driver>
+    <id>opcda</id>
+    <name>opcda</name>
+  </driver>
+  <log>
+    <level>debug</level>
+  </log>
+  <project>62393c36df61c0d066fa0e21</project>
+</XmlConfig>
