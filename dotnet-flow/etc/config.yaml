@@ -1,0 +1,10 @@
+﻿flow:
+  name: testHandler
+  mode: service
+
+log:
+  level: debug # debug/info/warn/error/fatal
+
+flowGrpc:
+  host: 127.0.0.1
+  port: 2333
