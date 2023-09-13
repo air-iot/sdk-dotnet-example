@@ -1,0 +1,14 @@
+﻿serviceId: testAlgorithm
+
+algorithm:
+  id: test
+  name: 测试算法
+
+log:
+  level: 5
+
+algorithmGrpc:
+  host: 127.0.0.1
+  port: 9236
+#  healthRequestTime: 10
+#  waitTime: 5

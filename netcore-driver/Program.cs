@@ -11,7 +11,7 @@ namespace Examples
         start:
             try
             {
-                AiriotSDK.Driver.DriverApp app = new AiriotSDK.Driver.DriverApp();
+                AiriotSDK.Driver.DriverApp app = new(args);
                 app.Start(new TestDriver());
                 while (true)
                 {

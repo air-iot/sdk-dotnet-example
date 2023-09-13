@@ -1,6 +1,6 @@
 ({
-    "title": "opcda",
-    "key": "opcda",
+    "title": "netcore-driver",
+    "key": "netcore-driver",
     "model": {
         "properties": {
             "settings": {

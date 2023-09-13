@@ -1,6 +1,6 @@
 ﻿extension:
-  id: dotnet-flow-ext-demo
-  name: 测试dotnet扩展节点服务
+  id: dotnetFlowExtension
+  name: dotnet扩展节点服务
 
 log:
   level: debug

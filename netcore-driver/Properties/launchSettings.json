@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "netcore-driver": {
+      "commandName": "Project",
+      "commandLineArgs": "--project=abc --serviceId=def"
+    }
+  }
+}

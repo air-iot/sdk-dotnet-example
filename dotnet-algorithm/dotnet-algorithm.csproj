@@ -3,15 +3,15 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>netcore_driver</RootNamespace>
+    <RootNamespace>dotnet_algorithm</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\dotnet-sdk\airiot-sdk-feature.csproj" />
+  </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy $(ProjectDir)etc\* $(TargetDir)etc\ /y/e" />
   </Target>
-
-  <ItemGroup>
-    <PackageReference Include="airiot-sdk-4.0" Version="1.0.0.6" />
-  </ItemGroup>
 
 </Project>

@@ -1,0 +1,9 @@
+﻿schema: http
+host: 127.0.0.1
+port: 31000
+
+projectId: default
+
+credentials:
+  ak: AK
+  sk: SK

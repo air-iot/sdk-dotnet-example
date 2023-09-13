@@ -1,5 +1,5 @@
 ﻿flow:
-  name: testHandler
+  name: dotnetFlow
   mode: service
 
 log:
