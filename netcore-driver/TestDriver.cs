@@ -14,6 +14,7 @@ namespace Examples
     {
         class StartParam
         {
+            public LogContext ctx;
             public DriverApp app;
             public byte[] bytes;
         }
@@ -22,19 +23,15 @@ namespace Examples
         bool threadExit = false;
         private async void StartProc(object param)
         {
-            if (!(param is StartParam))
-            {
-                Logger.LogError("参数错误");
-                return;
-            }
-            if (!(param is StartParam obj) || obj.app == null)
+            if (param is not StartParam obj || obj.app == null)
             {
                 Logger.LogError("参数param转换错误");
                 return;
             }
+            var ctx = obj.ctx;
 
             string models = Encoding.UTF8.GetString(obj.bytes);
-            Logger.LogDebug($"start {models}");
+            Logger.DebugContext(ctx, $"start {models}");
 
             Models.Config config;
             try
@@ -43,7 +40,7 @@ namespace Examples
             }
             catch (Exception ex)
             {
-                Logger.LogError($"反序列化错误:{ex.Message}");
+                Logger.ErrorContext(ctx, $"反序列化错误:{ex.Message}");
                 return;
             }
 
@@ -56,8 +53,7 @@ namespace Examples
                 { 
                     foreach (var d in t.Devices)
                     {
-                        Random random = new Random();
-                        List<Field> fields = new List<Field>();
+                        List<Field> fields = new();
 
                         if (d.DeviceConfig == null) { continue; }
                         
@@ -84,7 +80,7 @@ namespace Examples
                             }
                         }
 
-                        Point point = new Point()
+                        Point point = new()
                         {
                             table = t.ID,
                             id = d.ID,
@@ -93,7 +89,7 @@ namespace Examples
                         };
                         CommResult result = await obj.app.WritePoints(point);
                         if (result.Error != null)
-                            Logger.LogError($"数据写入错误,{result.Error.Message}");
+                            Logger.ErrorContext(ctx, $"数据写入错误,{result.Error.Message}");
                     }
                 }
                 GetNextValue();
@@ -102,14 +98,15 @@ namespace Examples
 
         }
 
-        public ErrorInfo Start(IDriverApp app, byte[] bytes)
+        public ErrorInfo Start(LogContext ctx, IDriverApp app, byte[] bytes)
         {
-            StartParam param = new StartParam()
+            StartParam param = new()
             {
+                ctx = ctx,
                 app = app as DriverApp,
                 bytes = bytes,
             };
-            Thread thread = new Thread(new ParameterizedThreadStart(StartProc))
+            Thread thread = new(new ParameterizedThreadStart(StartProc))
             {
                 IsBackground = true
             };
@@ -117,47 +114,47 @@ namespace Examples
             return null;
         }
 
-        public ErrorInfo Stop(IDriverApp app)
+        public ErrorInfo Stop(LogContext ctx, IDriverApp app)
         {
             threadExit = true;
-            Logger.LogDebug("stop");
+            Logger.DebugContext(ctx, "stop");
             return null;
         }
 
-        public CommResult Debug(IDriverApp app, byte[] bytes)
+        public CommResult Debug(LogContext ctx, IDriverApp app, byte[] bytes)
         {
-            Logger.LogDebug("Debug");
+            Logger.DebugContext(ctx, "Debug");
             return null;
         }
 
-        public ErrorInfo Reload(IDriverApp app, byte[] bytes)
+        public ErrorInfo Reload(LogContext ctx, IDriverApp app, byte[] bytes)
         {
-            Logger.LogDebug("Reload");
-            this.Stop(app);
+            Logger.DebugContext(ctx, "Reload");
+            this.Stop(ctx, app);
             Thread.Sleep(10000);
-            return this.Start(app, bytes);
+            return this.Start(ctx, app, bytes);
         }
 
-        public CommResult Run(IDriverApp app, Command cmd)
+        public CommResult Run(LogContext ctx, IDriverApp app, Command cmd)
         {
-            Logger.LogDebug("Run");
+            Logger.DebugContext(ctx, "Run");
             return null;
         }
 
-        public CommResult Schema(IDriverApp app)
+        public CommResult Schema(LogContext ctx, IDriverApp app)
         {
-            Logger.LogDebug("Schema");
+            Logger.DebugContext(ctx, "Schema");
             string schemaPath = AppDomain.CurrentDomain.BaseDirectory + "/etc/schema.js";
             string str = File.ReadAllText(schemaPath);
             return CommResult.Success("", str);
         }
 
-        public CommResult BatchRun(IDriverApp app, BatchCommand cmd)
+        public CommResult BatchRun(LogContext ctx, IDriverApp app, BatchCommand cmd)
         {
             throw new NotImplementedException();
         }
 
-        public CommResult WriteTag(IDriverApp app, AiriotSDK.Driver.Command cmd)
+        public CommResult WriteTag(LogContext ctx, IDriverApp app, AiriotSDK.Driver.Command cmd)
         {
             throw new NotImplementedException();
         }

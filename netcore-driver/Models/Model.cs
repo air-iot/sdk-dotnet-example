@@ -13,7 +13,7 @@ namespace Examples.Models
         [JsonProperty("name")] public string Name; // 
         [JsonProperty("driverType")] public string DriverType; // 
         [JsonProperty("device")] public DeviceConfig Device; // 模型驱动信息
-        [JsonProperty("tables")] public Table[] Tables;// 所属模型的资产配置信息 
+        [JsonProperty("tables")] public Table[] Tables;// 所属模型的设备配置信息 
     }
 
     public class Table
@@ -21,14 +21,14 @@ namespace Examples.Models
         [JsonProperty("id")] public string ID;   // id，唯一标识
         [JsonProperty("project")] public string Project; // 
         [JsonProperty("device")] public DeviceConfig Device; // 模型驱动信息
-        [JsonProperty("devices")] public Device[] Devices;// 所属模型的资产配置信息 
+        [JsonProperty("devices")] public Device[] Devices;// 所属模型的设备配置信息 
     }
 
     public class Device
     {
-        [JsonProperty("id")] public string ID; // 资产id，资产唯一标识
+        [JsonProperty("id")] public string ID; // 设备id，设备唯一标识
         [JsonProperty("table")] public string Table;
-        [JsonProperty("device")] public DeviceConfig DeviceConfig; // 资产驱动信息
+        [JsonProperty("device")] public DeviceConfig DeviceConfig; // 设备驱动信息
     }
 
     public class DeviceConfig

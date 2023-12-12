@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\dotnet-sdk\airiot-sdk-feature.csproj" />
+    <PackageReference Include="airiot-sdk-4.0" Version="1.0.0.7" />
   </ItemGroup>
 
 </Project>

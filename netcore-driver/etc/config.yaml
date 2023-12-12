@@ -4,9 +4,6 @@
     host: 127.0.0.1
     port: 1883
 
-#serviceId: 645b4249b4f5349780d205d5
-#project: default
-
 driver:
   id: netcore-driver
   name: C#测试驱动

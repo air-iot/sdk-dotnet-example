@@ -12,7 +12,7 @@ namespace dotnet_algorithm
 {
     class TestAlgorithm : IService
     {
-        public CommResult Run(IAlgorithmApp app, byte[] bytes)
+        public CommResult Run(LogContext ctx, IAlgorithmApp app, byte[] bytes)
         {
             if (bytes == null)
             {
@@ -80,9 +80,9 @@ namespace dotnet_algorithm
             }
         }
 
-        public CommResult Schema(IAlgorithmApp app)
+        public CommResult Schema(LogContext ctx, IAlgorithmApp app)
         {
-            Logger.LogInfo("schema");
+            Logger.InfoContext(ctx, "schema");
             return CommResult.Success(null, Entity.Schema);
         }
     }

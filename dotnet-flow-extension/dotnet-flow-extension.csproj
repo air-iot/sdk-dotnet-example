@@ -11,7 +11,7 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="airiot-sdk-4.0" Version="1.0.0.4" />
+    <PackageReference Include="airiot-sdk-4.0" Version="1.0.0.7" />
   </ItemGroup>
 
 </Project>
