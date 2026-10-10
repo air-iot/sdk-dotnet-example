@@ -1,0 +1,6 @@
+serviceId: algorithm-demo
+algorithm:
+  id: add
+  name: 加法算法
+log:
+  level: info

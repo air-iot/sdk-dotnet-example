@@ -1,0 +1,5 @@
+flow:
+  name: echo
+  mode: user
+log:
+  level: info

@@ -1,0 +1,7 @@
+project: demo
+instanceId: relay-demo
+service:
+  id: echo
+  name: echo-relay
+log:
+  level: info

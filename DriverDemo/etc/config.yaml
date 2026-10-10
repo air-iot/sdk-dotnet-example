@@ -1,0 +1,17 @@
+project: demo
+serviceId: driver-demo
+mq:
+  type: mqtt
+  mqtt:
+    host: 127.0.0.1
+    port: 1883
+    username: admin
+    password: public
+driver:
+  id: sim
+  name: sim-driver
+log:
+  level: debug
+driverGrpc:
+  host: 127.0.0.1
+  port: 9224

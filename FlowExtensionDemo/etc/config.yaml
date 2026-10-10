@@ -1,0 +1,5 @@
+extension:
+  id: double
+  name: 翻倍扩展
+log:
+  level: info
